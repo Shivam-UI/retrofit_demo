@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,6 +51,8 @@ public class EmailListAdapter extends RecyclerView.Adapter<EmailListAdapter.Emai
     public void onBindViewHolder(@NonNull EmailListAdapter.EmailHolder holder, final int position) {
         id = emails.get(position).getIdtableEmail();
         email = emails.get(position).getTableEmailEmailAddress();
+        int pos = position + 1;
+        holder.s_no.setText(pos+".");
         holder.emailText.setText(email);
         holder.deletebtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,13 +127,14 @@ public class EmailListAdapter extends RecyclerView.Adapter<EmailListAdapter.Emai
     }
 
     public static class EmailHolder extends RecyclerView.ViewHolder {
-        TextView emailText;
-        Button updatebtn, deletebtn;
+        TextView emailText,s_no;
+        ImageView updatebtn, deletebtn;
 
         public EmailHolder(@NonNull View itemView) {
             super(itemView);
             // init
             emailText = itemView.findViewById(R.id.emailText);
+            s_no = itemView.findViewById(R.id.s_no);
             updatebtn = itemView.findViewById(R.id.updatebtn);
             deletebtn = itemView.findViewById(R.id.deletebtn);
         }
